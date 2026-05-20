@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PREDA Video Optimizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <svg class="p-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+        <defs>
+          <linearGradient id="gradientP" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="24" fill="white"/>
+        <circle cx="24" cy="24" r="22" fill="url(#gradientP)"/>
+        <text x="24" y="32" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white" dominant-baseline="middle">P</text>
+      </svg>
+      <h1>PREDA Video Optimizer</h1>
+    </div>
+
+    <!-- Video Input -->
+    <div class="section">
+      <label for="videoInput" class="label">📁 Select Video</label>
+      <input type="file" id="videoInput" accept="video/*" class="file-input">
+      <div id="fileName" class="file-name">No file selected</div>
+    </div>
+
+    <!-- Frame Rate -->
+    <div class="section">
+      <label class="label">⏱️ Frame Rate</label>
+      <select id="frameRate" class="select">
+        <option value="original">Original FPS</option>
+        <option value="30">30 FPS (60→30fps)</option>
+      </select>
+    </div>
+
+    <!-- Resolution -->
+    <div class="section">
+      <label class="label">📺 Resolution</label>
+      <select id="resolution" class="select">
+        <option value="original">Original</option>
+        <option value="1080">1080p (1920x1080)</option>
+        <option value="720">720p (1280x720)</option>
+      </select>
+    </div>
+
+    <!-- Output Format -->
+    <div class="section">
+      <label class="label">🎬 Output Format</label>
+      <select id="format" class="select">
+        <option value="mp4">MP4 (H.264)</option>
+        <option value="mov">MOV (H.264)</option>
+      </select>
+    </div>
+
+    <!-- Quality Preset -->
+    <div class="section">
+      <label class="label">⭐ Quality Preset</label>
+      <select id="qualityPreset" class="select">
+        <option value="high">HIGH (8000 kbps)</option>
+        <option value="medium">Medium (5000 kbps)</option>
+        <option value="low">Low (3000 kbps)</option>
+        <option value="custom">Custom Bitrate</option>
+      </select>
+    </div>
+
+    <!-- Custom Bitrate -->
+    <div class="section" id="bitrateSection" style="display:none;">
+      <label class="label">📊 Bitrate (kbps)</label>
+      <input type="range" id="bitrate" min="1000" max="10000" value="5000" class="slider">
+      <div id="bitrateValue" class="bitrate-value">5000 kbps</div>
+    </div>
+
+    <!-- Advanced Settings Toggle -->
+    <div class="section">
+      <button id="advancedToggle" class="toggle-btn">⚙️ Advanced Settings</button>
+    </div>
+
+    <!-- Advanced Settings (Hidden by default) -->
+    <div id="advancedSettings" class="advanced-settings" style="display:none;">
+      <div class="section">
+        <label class="label">🔊 Audio Bitrate (kbps)</label>
+        <select id="audioBitrate" class="select">
+          <option value="128">128 kbps</option>
+          <option value="192">192 kbps</option>
+          <option value="256">256 kbps</option>
+        </select>
+      </div>
+      <div class="section">
+        <label class="label">📝 Video Codec</label>
+        <select id="videoCodec" class="select">
+          <option value="h264">H.264</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressContainer" class="progress-container" style="display:none;">
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div id="progressText" class="progress-text">0%</div>
+    </div>
+
+    <!-- Status Message -->
+    <div id="statusMessage" class="status-message"></div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button id="convertBtn" class="btn btn-primary" disabled>🚀 Convert Video</button>
+      <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Made by <a href="https://www.tiktok.com/@predator777" target="_blank">@predator777</a></p>
+      <p>PREDA Video Optimizer v1.0.0</p>
+    </div>
+  </div>
+
+  <!-- FFmpeg library -->
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
